@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.team7619.keepdoing.MainActivity"
+    android:layout_marginTop="1dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/item_lly"
+        android:layout_marginTop="@dimen/default_value"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.team7619.keepdoing.myviews.CircleImage.RoundImageView
+                android:id="@+id/title_icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/xing">
+            </com.team7619.keepdoing.myviews.CircleImage.RoundImageView>
+
+            <TextView
+                android:layout_marginLeft="@dimen/value_15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/name"
+                android:text="一一" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/value_15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/publish_time"
+                android:text="10.11 11:08" />
+
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_margin="@dimen/default_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/article_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="月薪10万你也可以"
+            />
+
+        <TextView
+            android:layout_marginTop="@dimen/value_10dp"
+            android:id="@+id/article_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="微软小娜全球资深产品总监Paul Bloom接受CSDN记者采访."
+            />
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

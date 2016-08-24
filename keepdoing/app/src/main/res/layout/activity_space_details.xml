@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <!-- title -->
+    <include
+        android:id="@+id/title"
+        layout="@layout/layout_title_normal" />
+    <ScrollView
+        android:layout_below="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_margin="@dimen/default_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/article_title_con"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/value_18sp"
+                android:text="月薪10万你也可以"
+                />
+            <TextView
+                android:layout_marginTop="@dimen/value_10dp"
+                android:id="@+id/join_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="100人参与"
+                android:textSize="@dimen/value_12sp"
+                />
+            <TextView
+                android:layout_marginTop="@dimen/value_10dp"
+                android:id="@+id/article_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以"
+                />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="@dimen/value_15dp"
+        >
+
+        <ImageButton
+            android:id="@+id/add_comment"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_add_comment"
+            android:background="#00000000"/>
+
+        <ImageButton
+            android:id="@+id/all_comment"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_comment"
+            android:background="#00000000" />
+
+        <ImageButton
+            android:id="@+id/like_it"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_like"
+            android:background="#00000000" />
+
+        <ImageButton
+            android:id="@+id/share_it"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_share"
+            android:background="#00000000"
+            />
+    </LinearLayout>
+</RelativeLayout>
