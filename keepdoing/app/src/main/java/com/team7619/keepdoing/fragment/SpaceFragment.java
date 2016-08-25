@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.team7619.keepdoing.Bmob.BmobQueryListener;
 import com.team7619.keepdoing.Bmob.BmobUtils;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.activity.SpaceDetails;
@@ -34,6 +35,11 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by ex-dushiguang201 on 2016-06-12.
@@ -92,13 +98,35 @@ public class SpaceFragment extends Fragment {
      */
     @Background
     public void getListData(int recordOffset) {
-        //closeLoadingProgress();         //不用base中的
+        //closeLoadingProgress();
+        // 不用base中的
         //showLoadingDialog();
         //HouseBaoBeiEntity entity = app.getHaofangtuoApi().getHaiWaiHouseBaoBei(activity.customerId, recordOffset, 10);
         //数据刷新要放在UI线程!
-        ArrayList<Space_Info> items = (ArrayList<Space_Info>) mBmobUtils.QueryBmobDb();
+        final ArrayList<Space_Info> items = new ArrayList<Space_Info>();
+        BmobQuery<Space_Info> query = new BmobQuery<Space_Info>();
+        query.order("publish_time");
+        query.findObjects(new FindListener<Space_Info>(){
+            @Override
+            public void done(List<Space_Info> list, BmobException e) {
+
+                //Log.e("dushiguang","list-----" + list.size());
+                if(null == e) {
+                    Log.e("dushiguang","list-----" + list.size());
+                    for(Space_Info listInfo : list) {
+                        items.add(listInfo);
+                    }
+                    updateDaoDianDateListData(items);
+                } else {
+                    Log.e("dushiguang","e-----" + e);
+                }
+
+            }
+        });
+        Log.e("dushiguang","items-----" + items);
+        //mBmobUtils.QueryBmobDb();
         //updateDaoDianDateListData(entity);
-        updateDaoDianDateListData(items);
+
     }
 
     @UiThread
@@ -223,5 +251,7 @@ public class SpaceFragment extends Fragment {
                 listener.onItemClickListener(itemView, getAdapterPosition());
             }
         }
+
+
     }
 }
