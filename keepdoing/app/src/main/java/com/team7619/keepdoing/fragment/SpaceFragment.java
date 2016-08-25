@@ -15,11 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.team7619.keepdoing.Bmob.BmobUtils;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.activity.SpaceDetails;
 import com.team7619.keepdoing.adapter.FoldingCellListAdapter;
 import com.team7619.keepdoing.entity.Item;
 import com.team7619.keepdoing.entity.SpaceBean;
+import com.team7619.keepdoing.entity.Space_Info;
 import com.team7619.keepdoing.myviews.CircleImage.RoundImageView;
 import com.team7619.keepdoing.myviews.SwipeRefreshRecyclerView.ItemDivider;
 import com.team7619.keepdoing.myviews.SwipeRefreshRecyclerView.SwipeRefreshRecyclerView;
@@ -43,14 +45,17 @@ public class SpaceFragment extends Fragment {
 
     private int recordOffset = 0;   //数据偏移量
     private int mTotalNum;    //显示条目的总数量
-    private ArrayList<SpaceBean> mSpaceBean = new ArrayList<SpaceBean>();  //到店日期数据源
+    private ArrayList<Space_Info> mSpaceBean = new ArrayList<Space_Info>();  //到店日期数据源
     private ListAdapater mAdapter;
     private RecyclerView mRecyclerView;
+    private BmobUtils mBmobUtils;
 
     @AfterViews
     void afterViews() {
         initRecyclerView();
         getListData(recordOffset);
+        mBmobUtils = BmobUtils.getBmobUtils();
+        mBmobUtils.initBmob(getContext());
         mRecyclerView = theListView.getRecyclerView();
         mRecyclerView.addItemDecoration(new ItemDivider(getContext(), LinearLayoutManager.HORIZONTAL, 1, getResources().getColor(R.color.mainbg)));
     }
@@ -91,14 +96,13 @@ public class SpaceFragment extends Fragment {
         //showLoadingDialog();
         //HouseBaoBeiEntity entity = app.getHaofangtuoApi().getHaiWaiHouseBaoBei(activity.customerId, recordOffset, 10);
         //数据刷新要放在UI线程!
-
-        ArrayList<SpaceBean> items = SpaceBean.getTestingList();
+        ArrayList<Space_Info> items = (ArrayList<Space_Info>) mBmobUtils.QueryBmobDb();
         //updateDaoDianDateListData(entity);
         updateDaoDianDateListData(items);
     }
 
     @UiThread
-    void updateDaoDianDateListData (ArrayList<SpaceBean> items) {
+    void updateDaoDianDateListData (ArrayList<Space_Info> items) {
 
         if (recordOffset == 0) {
             theListView.scrollToPosition(0); //列表显示置顶
@@ -162,12 +166,12 @@ public class SpaceFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ListItemViewHolder holder, final int position) {
-            final SpaceBean item = mSpaceBean.get(position);
+            final Space_Info item = mSpaceBean.get(position);
             if (null != item) {
                 holder.name.setText(item.getName());
-                holder.publishTime.setText(item.getPublishTime());
-                holder.articleTitle.setText(item.getArticleTitle());
-                holder.articleAbout.setText(item.getArticleAbout());
+                holder.publishTime.setText(item.getPublish_time());
+                holder.articleTitle.setText(item.getInfo_title());
+                holder.articleAbout.setText(item.getInfo_about());
 
                 holder.itemLly.setOnClickListener(new View.OnClickListener() {
 
