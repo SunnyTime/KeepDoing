@@ -10,6 +10,7 @@ public class Space_Info {
     String info_title;
     String info_about;
     String Icon;
+    String article_id;
 
     public String getUser_id() {
         return user_id;
@@ -58,4 +59,13 @@ public class Space_Info {
     public void setIcon(String icon) {
         Icon = icon;
     }
+
+    public String getArticle_id() {
+        return article_id;
+    }
+
+    public void setArticle_id(String article_id) {
+        this.article_id = article_id;
+    }
 }
+

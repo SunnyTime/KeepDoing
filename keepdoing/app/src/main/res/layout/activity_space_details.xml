@@ -6,10 +6,10 @@
     >
     <!-- title -->
     <include
-        android:id="@+id/title"
+        android:id="@+id/title_normal"
         layout="@layout/layout_title_normal" />
     <ScrollView
-        android:layout_below="@+id/title"
+        android:layout_below="@+id/title_normal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -19,7 +19,7 @@
             android:orientation="vertical"
             >
             <TextView
-                android:id="@+id/article_title_con"
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/value_18sp"
@@ -35,7 +35,7 @@
                 />
             <TextView
                 android:layout_marginTop="@dimen/value_10dp"
-                android:id="@+id/article_content"
+                android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以"

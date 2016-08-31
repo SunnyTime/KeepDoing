@@ -25,8 +25,7 @@ allprojects {
     repositories {
         jcenter()
         maven {
-            url "http://maven.ipo.com/nexus/content/groups/public/";
-                    "https://raw.github.com/bmob/bmob-android-sdk/master"}
+            url "http://maven.ipo.com/nexus/content/groups/public/"; }
         //jcenter{
             //url "http://jcenter.bintray.com"
         //}

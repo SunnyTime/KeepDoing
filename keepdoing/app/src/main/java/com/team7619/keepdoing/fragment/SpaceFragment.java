@@ -1,7 +1,6 @@
 package com.team7619.keepdoing.fragment;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,24 +8,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.team7619.keepdoing.Bmob.BmobQueryListener;
 import com.team7619.keepdoing.Bmob.BmobUtils;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.activity.SpaceDetails;
-import com.team7619.keepdoing.adapter.FoldingCellListAdapter;
-import com.team7619.keepdoing.entity.Item;
-import com.team7619.keepdoing.entity.SpaceBean;
 import com.team7619.keepdoing.entity.Space_Info;
 import com.team7619.keepdoing.myviews.CircleImage.RoundImageView;
 import com.team7619.keepdoing.myviews.SwipeRefreshRecyclerView.ItemDivider;
 import com.team7619.keepdoing.myviews.SwipeRefreshRecyclerView.SwipeRefreshRecyclerView;
-import com.team7619.keepdoing.myviews.foldingcell.FoldingCell;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -205,7 +196,7 @@ public class SpaceFragment extends Fragment {
 
                     @Override
                     public void onClick(View v) {
-                        SpaceDetails.jumpToSpaceDetails(getContext());
+                        SpaceDetails.jumpToSpaceDetails(getContext(), item.getArticle_id());
                     }
                 });
             }
