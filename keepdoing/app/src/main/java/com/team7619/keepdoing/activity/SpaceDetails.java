@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.team7619.keepdoing.BaseActivity;
+import com.team7619.keepdoing.Bmob.BmobUtils;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.entity.Article_Context;
 
@@ -18,8 +19,11 @@ import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.List;
+
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
 /**
@@ -27,6 +31,8 @@ import cn.bmob.v3.listener.QueryListener;
  */
 @EActivity(R.layout.activity_space_details)
 public class SpaceDetails extends BaseActivity {
+
+
     @ViewById(R.id.title_back_tv)
     TextView btBack;
 
@@ -48,25 +54,27 @@ public class SpaceDetails extends BaseActivity {
     @Background
     void getArticleContent() {
         //查找Person表里面id为articleId的数据
-        BmobQuery<Article_Context> bmobQuery = new BmobQuery<Article_Context>();
-        bmobQuery.getObject(articleId, new QueryListener<Article_Context>() {
+        BmobQuery<Article_Context> query = new BmobQuery<Article_Context>();
+        query.addWhereEqualTo("article_id", articleId);
+        query.findObjects(new FindListener<Article_Context>() {
             @Override
-            public void done(Article_Context bean,BmobException e) {
-                if(e==null){
+            public void done(List<Article_Context> list, BmobException e) {
+                if(e == null){
                     //toast("查询成功");
-                    setArticleInfo(bean);
+                    setArticleInfo(list);
                 }else{
                     //toast("查询失败：" + e.getMessage());
-                    Toast.makeText(SpaceDetails.this, "查询失败",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SpaceDetails.this, "查询失败" + e.getMessage(),Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     @UiThread
-    void setArticleInfo(Article_Context bean) {
+    void setArticleInfo(List<Article_Context> list) {
+        Article_Context bean = list.get(0);
         mTitle.setText(bean.getArticle_title());
-        mJoinNum.setText(bean.getJoin_num());
+        mJoinNum.setText(bean.getJoin_num() + "参与");
         mContent.setText(bean.getArticle_context());
     }
 

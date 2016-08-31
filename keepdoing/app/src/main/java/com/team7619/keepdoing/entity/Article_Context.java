@@ -1,9 +1,11 @@
 package com.team7619.keepdoing.entity;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by dushiguang on 16/8/30.
  */
-public class Article_Context {
+public class Article_Context extends BmobObject {
     String artivle_id;
     String article_title;
     String join_num;

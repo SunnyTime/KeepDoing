@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.team7619.keepdoing.Bmob.BmobUtils;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.activity.SpaceDetails;
 import com.team7619.keepdoing.entity.Space_Info;
@@ -45,14 +44,11 @@ public class SpaceFragment extends Fragment {
     private ArrayList<Space_Info> mSpaceBean = new ArrayList<Space_Info>();  //到店日期数据源
     private ListAdapater mAdapter;
     private RecyclerView mRecyclerView;
-    private BmobUtils mBmobUtils;
 
     @AfterViews
     void afterViews() {
         initRecyclerView();
         getListData(recordOffset);
-        mBmobUtils = BmobUtils.getBmobUtils();
-        mBmobUtils.initBmob(getContext());
         mRecyclerView = theListView.getRecyclerView();
         mRecyclerView.addItemDecoration(new ItemDivider(getContext(), LinearLayoutManager.HORIZONTAL, 1, getResources().getColor(R.color.mainbg)));
     }
@@ -100,10 +96,7 @@ public class SpaceFragment extends Fragment {
         query.findObjects(new FindListener<Space_Info>(){
             @Override
             public void done(List<Space_Info> list, BmobException e) {
-
-                //Log.e("dushiguang","list-----" + list.size());
                 if(null == e) {
-                    Log.e("dushiguang","list-----" + list.size());
                     for(Space_Info listInfo : list) {
                         items.add(listInfo);
                     }
@@ -114,9 +107,6 @@ public class SpaceFragment extends Fragment {
 
             }
         });
-        Log.e("dushiguang","items-----" + items);
-        //mBmobUtils.QueryBmobDb();
-        //updateDaoDianDateListData(entity);
 
     }
 

@@ -23,14 +23,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/value_18sp"
-                android:text="月薪10万你也可以"
                 />
             <TextView
                 android:layout_marginTop="@dimen/value_10dp"
                 android:id="@+id/join_num"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="100人参与"
                 android:textSize="@dimen/value_12sp"
                 />
             <TextView
@@ -38,7 +36,6 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以月薪10万你也可以,月薪10万你也可以,月薪10万你也可以,月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以月薪10万你也可以"
                 />
         </LinearLayout>
     </ScrollView>

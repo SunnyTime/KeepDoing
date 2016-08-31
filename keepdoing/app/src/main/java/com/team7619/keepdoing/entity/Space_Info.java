@@ -1,9 +1,11 @@
 package com.team7619.keepdoing.entity;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by dushiguang on 16/8/25.
  */
-public class Space_Info {
+public class Space_Info  extends BmobObject {
     String user_id;
     String publish_time;
     String name;

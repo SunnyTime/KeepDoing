@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 
-import com.team7619.keepdoing.Bmob.BmobUtils;
 import com.team7619.keepdoing.fragment.MessageFragment_;
 import com.team7619.keepdoing.fragment.PersonCenterFragment_;
 import com.team7619.keepdoing.fragment.SpaceFragment_;
@@ -27,7 +26,6 @@ public class MainActivity extends BaseActivity {
     private SpaceFragment_ spaceFragment;
     private MessageFragment_ messageFragment;
     private PersonCenterFragment_ personCenterFragment;
-    private BmobUtils mBmobUtils;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,8 +67,6 @@ public class MainActivity extends BaseActivity {
         });
 
         setTabSelection(0);
-        mBmobUtils = BmobUtils.getBmobUtils();
-        mBmobUtils.initBmob(this);
     }
 
     private void setTabSelection(int index) {
