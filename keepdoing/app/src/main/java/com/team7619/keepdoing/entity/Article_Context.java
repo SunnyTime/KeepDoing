@@ -6,18 +6,11 @@ import cn.bmob.v3.BmobObject;
  * Created by dushiguang on 16/8/30.
  */
 public class Article_Context extends BmobObject {
-    String artivle_id;
     String article_title;
     String join_num;
     String article_context;
+    String article_id;
 
-    public String getArtivle_id() {
-        return artivle_id;
-    }
-
-    public void setArtivle_id(String artivle_id) {
-        this.artivle_id = artivle_id;
-    }
 
     public String getArticle_context() {
         return article_context;
@@ -41,5 +34,13 @@ public class Article_Context extends BmobObject {
 
     public void setJoin_num(String join_num) {
         this.join_num = join_num;
+    }
+
+    public String getArticle_id() {
+        return article_id;
+    }
+
+    public void setArticle_id(String article_id) {
+        this.article_id = article_id;
     }
 }

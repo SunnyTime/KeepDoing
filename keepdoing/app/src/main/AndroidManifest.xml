@@ -30,6 +30,7 @@
 
         <activity android:name="com.team7619.keepdoing.activity.SpaceDetails_" />
 
+        <activity android:name="com.team7619.keepdoing.activity.WriteActivity_" />
     </application>
 
 </manifest>

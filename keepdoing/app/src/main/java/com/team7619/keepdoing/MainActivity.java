@@ -1,5 +1,6 @@
 package com.team7619.keepdoing;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,10 +8,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 
+import com.team7619.keepdoing.activity.WriteActivity;
 import com.team7619.keepdoing.fragment.MessageFragment_;
 import com.team7619.keepdoing.fragment.PersonCenterFragment_;
 import com.team7619.keepdoing.fragment.SpaceFragment_;
-import com.team7619.keepdoing.fragment.WriteFragment_;
 import com.team7619.keepdoing.myviews.BottomNavigation.BottomNavigationItem;
 import com.team7619.keepdoing.myviews.BottomNavigation.BottomNavigationView;
 import com.team7619.keepdoing.myviews.BottomNavigation.OnBottomNavigationItemClickListener;
@@ -27,7 +28,8 @@ public class MainActivity extends BaseActivity {
     private SpaceFragment_ spaceFragment;
     private MessageFragment_ messageFragment;
     private PersonCenterFragment_ personCenterFragment;
-    private WriteFragment_ writeFragment;
+
+    public static final int MAINACTIVITYKEY = 0x01;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -103,12 +105,7 @@ public class MainActivity extends BaseActivity {
                 }
                 break;
             case 3:
-                if(null == writeFragment) {
-                    writeFragment = new WriteFragment_();
-                    transaction.add(R.id.content,writeFragment);
-                } else {
-                    transaction.show(writeFragment);
-                }
+                WriteActivity.jumpToWriteActivity(this);
                 break;
 
         }
@@ -123,6 +120,15 @@ public class MainActivity extends BaseActivity {
                     transaction.hide(f);
                 }
             }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 0x01 && resultCode == 1) {
+            setTabSelection(0);
+            spaceFragment.getListData(0);
+            bottomNavigationView.selectTab(0);
         }
     }
 }

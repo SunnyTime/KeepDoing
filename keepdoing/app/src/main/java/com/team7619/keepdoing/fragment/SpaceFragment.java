@@ -92,7 +92,7 @@ public class SpaceFragment extends Fragment {
         //数据刷新要放在UI线程!
         final ArrayList<Space_Info> items = new ArrayList<Space_Info>();
         BmobQuery<Space_Info> query = new BmobQuery<Space_Info>();
-        query.order("publish_time");
+        query.order("updatedAt");
         query.findObjects(new FindListener<Space_Info>(){
             @Override
             public void done(List<Space_Info> list, BmobException e) {
@@ -178,7 +178,7 @@ public class SpaceFragment extends Fragment {
             final Space_Info item = mSpaceBean.get(position);
             if (null != item) {
                 holder.name.setText(item.getName());
-                holder.publishTime.setText(item.getPublish_time());
+                holder.publishTime.setText(item.getUpdatedAt());
                 holder.articleTitle.setText(item.getInfo_title());
                 holder.articleAbout.setText(item.getInfo_about());
 
@@ -186,7 +186,7 @@ public class SpaceFragment extends Fragment {
 
                     @Override
                     public void onClick(View v) {
-                        SpaceDetails.jumpToSpaceDetails(getContext(), item.getArticle_id());
+                        SpaceDetails.jumpToSpaceDetails(getContext(), item.getObjectId());
                     }
                 });
             }

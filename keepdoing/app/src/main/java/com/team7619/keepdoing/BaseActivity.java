@@ -2,6 +2,7 @@ package com.team7619.keepdoing;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
 
 import com.team7619.keepdoing.Bmob.BmobUtils;
 
@@ -21,5 +22,12 @@ public abstract class BaseActivity extends FragmentActivity {
         //getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         mBmobUtils = new BmobUtils();
         mBmobUtils.initBmob(this);
+    }
+
+    public void showToast(int strId){
+        showToast(getString(strId));
+    }
+    public void showToast(String str) {
+        Toast.makeText(getApplicationContext(),str, Toast.LENGTH_SHORT).show();
     }
 }

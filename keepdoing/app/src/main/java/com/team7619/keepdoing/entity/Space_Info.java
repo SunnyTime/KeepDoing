@@ -69,5 +69,7 @@ public class Space_Info  extends BmobObject {
     public void setArticle_id(String article_id) {
         this.article_id = article_id;
     }
+
+
 }
 
