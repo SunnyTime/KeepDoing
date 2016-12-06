@@ -26,4 +26,7 @@
     <string name="content_to1_mock">46th Ave</string>
     <string name="content_to2_mock">Woodside, NY 11101</string>
     <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="write_fragment_title_hint">请输入标题</string>
+    <string name="write_fragment_content_hint">请输入内容</string>
 </resources>

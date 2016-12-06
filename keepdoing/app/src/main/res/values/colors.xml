@@ -28,4 +28,8 @@
     <color name="black_overlay">#66000000</color>
 
     <color name="mainbg">#CCCCCC</color>
+
+
+    <!--文本提示文字-->
+    <color name="text_hint_division">#a3a3a3</color>
 </resources>

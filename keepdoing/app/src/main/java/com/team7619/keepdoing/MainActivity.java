@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import com.team7619.keepdoing.fragment.MessageFragment_;
 import com.team7619.keepdoing.fragment.PersonCenterFragment_;
 import com.team7619.keepdoing.fragment.SpaceFragment_;
+import com.team7619.keepdoing.fragment.WriteFragment_;
 import com.team7619.keepdoing.myviews.BottomNavigation.BottomNavigationItem;
 import com.team7619.keepdoing.myviews.BottomNavigation.BottomNavigationView;
 import com.team7619.keepdoing.myviews.BottomNavigation.OnBottomNavigationItemClickListener;
@@ -26,6 +27,7 @@ public class MainActivity extends BaseActivity {
     private SpaceFragment_ spaceFragment;
     private MessageFragment_ messageFragment;
     private PersonCenterFragment_ personCenterFragment;
+    private WriteFragment_ writeFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,9 +39,9 @@ public class MainActivity extends BaseActivity {
         mFragmentManager = getSupportFragmentManager();
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         int[] image = {R.drawable.ic_space_24, R.drawable.ic_messgae_24,
-                R.drawable.ic_user_24};
+                R.drawable.ic_user_24,R.drawable.ic_write_24};
         int[] color = {ContextCompat.getColor(this, R.color.mainColor), ContextCompat.getColor(this, R.color.mainColor),
-                ContextCompat.getColor(this, R.color.mainColor)};
+                ContextCompat.getColor(this, R.color.mainColor),ContextCompat.getColor(this, R.color.mainColor)};
 
         if (bottomNavigationView != null) {
             bottomNavigationView.isWithText(false);
@@ -54,10 +56,13 @@ public class MainActivity extends BaseActivity {
                 ("Message", color[1], image[1]);
         BottomNavigationItem uesrItem = new BottomNavigationItem
                 ("User  ", color[2], image[2]);
+        BottomNavigationItem writeItem = new BottomNavigationItem
+                ("Write", color[3], image[3]);
 
         bottomNavigationView.addTab(spaceItem);
         bottomNavigationView.addTab(messageItem);
         bottomNavigationView.addTab(uesrItem);
+        bottomNavigationView.addTab(writeItem);
 
         bottomNavigationView.setOnBottomNavigationItemClickListener(new OnBottomNavigationItemClickListener() {
             @Override
@@ -97,6 +102,15 @@ public class MainActivity extends BaseActivity {
                     transaction.show(personCenterFragment);
                 }
                 break;
+            case 3:
+                if(null == writeFragment) {
+                    writeFragment = new WriteFragment_();
+                    transaction.add(R.id.content,writeFragment);
+                } else {
+                    transaction.show(writeFragment);
+                }
+                break;
+
         }
         transaction.commitAllowingStateLoss();
     }

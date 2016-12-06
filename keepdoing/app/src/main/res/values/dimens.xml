@@ -5,6 +5,8 @@
 
     <!--默认间隔-->
     <dimen name="default_value">10dp</dimen>
+    <dimen name="value_5dp">5dp</dimen>
+
 
     <dimen name="value_10dp">10dp</dimen>
     <dimen name="value_15dp">15dp</dimen>
@@ -32,4 +34,6 @@
     <dimen name="value_12sp">12sp</dimen>
     <dimen name="value_15sp">15sp</dimen>
     <dimen name="value_18sp">18sp</dimen>
+    <!--大标题-->
+    <dimen name="value_25sp">25sp</dimen>
 </resources>
