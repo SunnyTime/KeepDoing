@@ -96,14 +96,24 @@ public class WriteActivity extends BaseActivity{
             public void done(String s, BmobException e) {
                 if(e == null) {
                     showToast("发布成功！");
-                    Intent intent = new Intent();
-                    WriteActivity.this.setResult(MainActivity.MAINACTIVITYKEY, intent);
-                    finish();
+                    finishActivity();
+
                 } else {
                     showToast("发布失败！" + e);
                 }
             }
         });
+    }
+
+    private void finishActivity(){
+        Intent intent = new Intent();
+        WriteActivity.this.setResult(MainActivity.MAINACTIVITYKEY, intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishActivity();
     }
 
     @Click(R.id.ic_more_tv)
