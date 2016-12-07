@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.team7619.keepdoing.BaseFragment;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.activity.SpaceDetails;
 import com.team7619.keepdoing.entity.Space_Info;
@@ -35,7 +36,7 @@ import cn.bmob.v3.listener.FindListener;
  * Created by ex-dushiguang201 on 2016-06-12.
  */
 @EFragment(R.layout.fragment_space)
-public class SpaceFragment extends Fragment {
+public class SpaceFragment extends BaseFragment {
     @ViewById(R.id.space_listview)
     SwipeRefreshRecyclerView theListView;
 
@@ -90,6 +91,7 @@ public class SpaceFragment extends Fragment {
         //showLoadingDialog();
         //HouseBaoBeiEntity entity = app.getHaofangtuoApi().getHaiWaiHouseBaoBei(activity.customerId, recordOffset, 10);
         //数据刷新要放在UI线程!
+        showprogress();
         final ArrayList<Space_Info> items = new ArrayList<Space_Info>();
         BmobQuery<Space_Info> query = new BmobQuery<Space_Info>();
         query.order("updatedAt");
@@ -104,7 +106,7 @@ public class SpaceFragment extends Fragment {
                 } else {
                     Log.e("dushiguang","e-----" + e);
                 }
-
+                closeProgress();
             }
         });
 
