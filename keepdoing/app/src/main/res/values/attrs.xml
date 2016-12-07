@@ -32,4 +32,24 @@
         <attr name="border_outside_color" format="color"></attr>
     </declare-styleable>
     <!--圆形图片属性 e-->
+
+    <!--循环加载框-->
+    <declare-styleable name="CircularProgress">
+        <!--加载数值-->
+        <attr name="cpv_progress" format="float" />
+        <!--总加载值-->
+        <attr name="cpv_maxProgress" format="float" />
+        <attr name="cpv_animDuration" format="integer" />
+        <attr name="cpv_animSwoopDuration" format="integer" />
+        <attr name="cpv_animSyncDuration" format="integer" />
+        <attr name="cpv_color" format="color"/>
+        <!--宽度-->
+        <attr name="cpv_thickness" format="dimension"/>
+        <!--加载框的模式是否是有具体的数值来计算的，如，网络请求时无法按数值计算的，下载文件则可以根据下载的文件比例来控制加载控件显示的状态-->
+        <attr name="cpv_indeterminate" format="boolean" />
+        <attr name="cpv_animAutostart" format="boolean" />
+        <attr name="cpv_animSteps" format="integer" />
+        <!--初始的角度-->
+        <attr name="cpv_startAngle" format="float" />
+    </declare-styleable>
 </resources>
