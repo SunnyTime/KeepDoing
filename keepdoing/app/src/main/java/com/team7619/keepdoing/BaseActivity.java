@@ -16,7 +16,6 @@ import org.androidannotations.annotations.UiThread;
 @EActivity
 public abstract class BaseActivity extends FragmentActivity {
     public BmobUtils mBmobUtils;
-    private CircularProgress progressView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,22 +32,4 @@ public abstract class BaseActivity extends FragmentActivity {
     public void showToast(String str) {
         Toast.makeText(getApplicationContext(),str, Toast.LENGTH_SHORT).show();
     }
-
-    @UiThread
-    public void showprogress() {
-        if(null == progressView) {
-            progressView = new CircularProgress(this);
-            progressView.setIndeterminate(true);
-            progressView.startAnimation();
-        }
-    }
-
-    @UiThread
-    public void closeProgress() {
-        if(null != progressView) {
-            progressView.stopAnimation();
-        }
-        progressView = null;
-    }
-
 }

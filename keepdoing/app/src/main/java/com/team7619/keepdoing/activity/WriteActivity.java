@@ -34,6 +34,8 @@ public class WriteActivity extends BaseActivity{
 
     @ViewById(R.id.title_et)
     EditText mTitle;
+    @ViewById(R.id.about_et)
+    EditText mAbout;
     @ViewById(R.id.content_et)
     EditText mContent;
 
@@ -82,7 +84,6 @@ public class WriteActivity extends BaseActivity{
                 } else {
                     showToast("发布失败！" + e);
                     Log.e("dushiguang","---" + e);
-
                 }
             }
         });

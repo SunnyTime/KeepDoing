@@ -48,6 +48,8 @@ public class CircularProgress extends View {
     RectF bounds;//矩形边界
     ValueAnimator startAngleRotate;
     ValueAnimator progressAnimator;
+    //play()--->设置一个参考动画anima， with()-->跟参考动画同时执行， before（）-->在参考动画之前执行，
+    // after（anima）--> 在参考动画之后执行anima， after（long）-->在参考动画之后延迟long毫秒执行
     AnimatorSet indeterminateAnimator;
 
     List<CircularProgressViewListener> listeners;
@@ -152,8 +154,9 @@ public class CircularProgress extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        Log.e("dushiguang","----onDraw");
         // Draw the arc
+        //isInEditMode,解决可视化编辑器无法识别自定义控件问题
         float sweepAngle = (isInEditMode()) ? currentProgress / maxProgress * 360 : actualProgress / maxProgress * 360;
         if (!isIndeterminate) {
             canvas.drawArc(bounds, startAngle, sweepAngle, false, paint);
