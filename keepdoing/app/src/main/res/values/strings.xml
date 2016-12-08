@@ -30,5 +30,7 @@
     <string name="write_fragment_title_hint">请输入标题</string>
     <string name="write_fragment_content_hint">请输入内容</string>
     <string name="write_fragment_about_hint">请输入简介</string>
+    <string name="write_page_title">写文章</string>
+    <string name="null_str">"</string>
 
 </resources>

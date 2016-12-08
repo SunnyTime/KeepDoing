@@ -29,11 +29,6 @@ import cn.bmob.v3.listener.SaveListener;
  */
 @EActivity(R.layout.fragment_write)
 public class WriteActivity extends BaseActivity{
-    @ViewById(R.id.publish_btn)
-    TextView mPublish_Btn;
-    @ViewById(R.id.ic_more_tv)
-    TextView mIcMore;
-
     @ViewById(R.id.title_et)
     EditText mTitle;
     @ViewById(R.id.about_et)
@@ -49,12 +44,14 @@ public class WriteActivity extends BaseActivity{
 
     @AfterViews
     void afterViews() {
+        setBackIcon(IconFont.IC_BACK);
+        setPageLable(R.string.write_page_title);
+        mRight.setText("发布");
         space_info = new Space_Info();
         article_context = new Article_Context();
-        IconFontUtil.setIcon(this, mIcMore, "#4CAF50",IconFont.IC_MENU_MORE);
     }
 
-    @Click(R.id.publish_btn)
+    @Click(R.id.right_tv)
     void clickPublishBtn() {
         title = mTitle.getText().toString();
         content = mContent.getText().toString();
@@ -123,9 +120,9 @@ public class WriteActivity extends BaseActivity{
         finishActivity();
     }
 
-    @Click(R.id.ic_more_tv)
-    void clickMore() {
-
+    @Override
+    public void backClick() {
+        finishActivity();
     }
 
     public static void jumpToWriteActivity(Activity context) {

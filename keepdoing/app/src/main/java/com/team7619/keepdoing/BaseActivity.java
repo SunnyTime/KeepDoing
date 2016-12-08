@@ -2,22 +2,37 @@ package com.team7619.keepdoing;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.team7619.keepdoing.Bmob.BmobUtils;
+import com.team7619.keepdoing.Iconfont.Icon;
+import com.team7619.keepdoing.Iconfont.IconFont;
+import com.team7619.keepdoing.Iconfont.IconFontUtil;
 import com.team7619.keepdoing.widget.CircularProgress;
 import com.team7619.keepdoing.widget.CustomerProgressDialog;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
+import org.androidannotations.annotations.ViewById;
 
 /**
  * Created by ex-dushiguang201 on 2016-06-08.
  */
 @EActivity
 public abstract class BaseActivity extends FragmentActivity {
+    @ViewById(R.id.title_back_tv)
+    public TextView mTitleBack;
+    @ViewById(R.id.title_pagelabel_tv)
+    public TextView mTitlePageLable;
+    @ViewById(R.id.right_tv)
+    public TextView mRight;
+
     private CustomerProgressDialog dialog;
     public BmobUtils mBmobUtils;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,11 +43,28 @@ public abstract class BaseActivity extends FragmentActivity {
         mBmobUtils.initBmob(this);
     }
 
+    protected void setBackIcon(Icon icon) {
+        IconFontUtil.setIcon(this, mTitleBack, "#4CAF50", icon);
+    }
+
     public void showToast(int strId){
         showToast(getString(strId));
     }
+
     public void showToast(String str) {
         Toast.makeText(getApplicationContext(),str, Toast.LENGTH_SHORT).show();
+    }
+
+    public void setPageLable(int strId) {
+        mTitlePageLable.setText(getResources().getString(strId));
+    }
+
+    public void setRightButtonIcon(Icon icon) {
+        IconFontUtil.setIcon(this, mRight, icon);
+    }
+
+    public void setRightButtonText() {
+        mRight.setText("");
     }
 
     @UiThread
@@ -53,6 +85,11 @@ public abstract class BaseActivity extends FragmentActivity {
             dialog.dismiss();
         }
         dialog = null;
+    }
+
+    @Click(R.id.title_back_tv)
+    public void backClick() {
+        finish();
     }
 
 }

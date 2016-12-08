@@ -7,7 +7,7 @@ import com.team7619.keepdoing.R;
  * Created by dushiguang on 16/12/8.
  */
 public enum IconFont implements Icon {
-    IC_MENU_MORE(0xe68c);
+    IC_MENU_MORE(0xe68c), IC_BACK(0xe6ed);
 
     IconFont(int i) {
         mIconUtfValue = i;

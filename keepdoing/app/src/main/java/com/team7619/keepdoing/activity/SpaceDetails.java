@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.team7619.keepdoing.BaseActivity;
 import com.team7619.keepdoing.Bmob.BmobUtils;
+import com.team7619.keepdoing.Iconfont.IconFont;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.entity.Article_Context;
 
@@ -31,11 +32,6 @@ import cn.bmob.v3.listener.QueryListener;
  */
 @EActivity(R.layout.activity_space_details)
 public class SpaceDetails extends BaseActivity {
-
-
-    @ViewById(R.id.title_back_tv)
-    TextView btBack;
-
     @ViewById(R.id.title)
     TextView mTitle;
     @ViewById(R.id.join_num)
@@ -48,6 +44,9 @@ public class SpaceDetails extends BaseActivity {
 
     @AfterViews
     void afterViews() {
+        setBackIcon(IconFont.IC_BACK);
+        setPageLable(R.string.null_str);
+        setRightButtonIcon(IconFont.IC_MENU_MORE);
         getArticleContent();
     }
 
