@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.team7619.keepdoing.BaseActivity;
+import com.team7619.keepdoing.Iconfont.IconFont;
+import com.team7619.keepdoing.Iconfont.IconFontUtil;
 import com.team7619.keepdoing.MainActivity;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.entity.Article_Context;
@@ -49,6 +51,7 @@ public class WriteActivity extends BaseActivity{
     void afterViews() {
         space_info = new Space_Info();
         article_context = new Article_Context();
+        IconFontUtil.setIcon(this, mIcMore, "#4CAF50",IconFont.IC_MENU_MORE);
     }
 
     @Click(R.id.publish_btn)
@@ -66,8 +69,8 @@ public class WriteActivity extends BaseActivity{
             return;
         }
 
-        space_info.setName(title);
-        space_info.setInfo_about(content.substring(0,20));
+        space_info.setInfo_title(title);
+        space_info.setInfo_about(mAbout.getText().toString());
         publishInfo();
     }
 

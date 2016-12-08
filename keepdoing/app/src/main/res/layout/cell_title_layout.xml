@@ -32,7 +32,7 @@
                 android:layout_marginLeft="@dimen/value_15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/name"
+                android:id="@+id/article_title_tv"
                 android:text="一一" />
 
             <TextView
@@ -49,16 +49,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/article_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="月薪10万你也可以"
-            />
 
         <TextView
             android:layout_marginTop="@dimen/value_10dp"
-            android:id="@+id/article_about"
+            android:id="@+id/article_about_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="微软小娜全球资深产品总监Paul Bloom接受CSDN记者采访."

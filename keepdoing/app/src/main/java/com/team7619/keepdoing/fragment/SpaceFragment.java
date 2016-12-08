@@ -179,9 +179,8 @@ public class SpaceFragment extends BaseFragment {
         public void onBindViewHolder(ListItemViewHolder holder, final int position) {
             final Space_Info item = mSpaceBean.get(position);
             if (null != item) {
-                holder.name.setText(item.getName());
-                holder.publishTime.setText(item.getUpdatedAt());
                 holder.articleTitle.setText(item.getInfo_title());
+                holder.publishTime.setText(item.getUpdatedAt());
                 holder.articleAbout.setText(item.getInfo_about());
 
                 holder.itemLly.setOnClickListener(new View.OnClickListener() {
@@ -203,26 +202,18 @@ public class SpaceFragment extends BaseFragment {
 
     public class ListItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         RoundImageView titleIcon;
-        TextView name;
         TextView publishTime;
         TextView articleTitle;
         TextView articleAbout;
-        TextView articleTitleCon;
-        TextView joinNum;
-        TextView articleContent;
         LinearLayout itemLly;
         ItemClickListener listener;
 
         public ListItemViewHolder(View itemView, ItemClickListener listener) {
             super(itemView);
             titleIcon = (RoundImageView) itemView.findViewById(R.id.title_icon);
-            name = (TextView) itemView.findViewById(R.id.name);
+            articleTitle = (TextView) itemView.findViewById(R.id.article_title_tv);
             publishTime = (TextView) itemView.findViewById(R.id.publish_time);
-            articleTitle = (TextView) itemView.findViewById(R.id.article_title);
-            articleAbout = (TextView) itemView.findViewById(R.id.article_about);
-            /*articleTitleCon = (TextView) itemView.findViewById(R.id.article_title_con);
-            joinNum = (TextView) itemView.findViewById(R.id.join_num);
-            articleContent = (TextView) itemView.findViewById(R.id.article_content);*/
+            articleAbout = (TextView) itemView.findViewById(R.id.article_about_tv);
             itemLly= (LinearLayout)itemView.findViewById(R.id.item_lly);
             this.listener = listener;
             itemView.setOnClickListener(this);
