@@ -73,6 +73,7 @@ public class WriteActivity extends BaseActivity{
 
     @Background
     void publishInfo() {
+        showprogress();
         space_info.save(new SaveListener<String>() {
             @Override
             public void done(String s, BmobException e) {
@@ -84,6 +85,7 @@ public class WriteActivity extends BaseActivity{
                 } else {
                     showToast("发布失败！" + e);
                     Log.e("dushiguang","---" + e);
+                    closeProgress();
                 }
             }
         });
@@ -102,6 +104,7 @@ public class WriteActivity extends BaseActivity{
                 } else {
                     showToast("发布失败！" + e);
                 }
+                closeProgress();
             }
         });
     }
