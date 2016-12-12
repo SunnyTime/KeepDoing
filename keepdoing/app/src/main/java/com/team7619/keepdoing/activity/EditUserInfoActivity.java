@@ -2,10 +2,12 @@ package com.team7619.keepdoing.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Environment;
 
 import com.team7619.keepdoing.BaseActivity;
+import com.team7619.keepdoing.Iconfont.IconFont;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.Utils.FileUtil;
 import com.team7619.keepdoing.myviews.CircleImage.RoundImageView;
@@ -29,7 +31,8 @@ public class EditUserInfoActivity extends BaseActivity {
 
     @AfterViews
     public void afterViews() {
-
+        setPageLable(R.string.edit_user_info_pagelable);
+        setBackIcon(IconFont.IC_BACK);
     }
 
     private void takePhote() {

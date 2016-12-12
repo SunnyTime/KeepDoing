@@ -119,7 +119,6 @@ public class CircularProgress extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        Log.e("dushiguang", "onMeasure------");
         int xPad = getPaddingLeft() + getPaddingRight();
         int yPad = getPaddingTop() + getPaddingBottom();
         int width = getMeasuredWidth() - xPad;
@@ -154,7 +153,6 @@ public class CircularProgress extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Log.e("dushiguang","----onDraw");
         // Draw the arc
         //isInEditMode,解决可视化编辑器无法识别自定义控件问题
         float sweepAngle = (isInEditMode()) ? currentProgress / maxProgress * 360 : actualProgress / maxProgress * 360;
