@@ -5,11 +5,12 @@
 
     <!--默认间隔-->
     <dimen name="default_value">10dp</dimen>
+    <dimen name="value_1dp">1dp</dimen>
     <dimen name="value_5dp">5dp</dimen>
-
-
     <dimen name="value_10dp">10dp</dimen>
     <dimen name="value_15dp">15dp</dimen>
+    <dimen name="value_20dp">20dp</dimen>
+    <dimen name="value_50dp">50dp</dimen>
     <!--BottomNavigation values-->
     <dimen name="bottom_navigation_elevation">8dp</dimen>
     <dimen name="bottom_navigation_shadow_height">8dp</dimen>

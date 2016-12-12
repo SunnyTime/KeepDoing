@@ -45,18 +45,18 @@
         </LinearLayout>
 
         <LinearLayout
-        android:layout_margin="@dimen/default_value"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_marginTop="@dimen/value_10dp"
-            android:id="@+id/article_about_tv"
+            android:layout_margin="@dimen/default_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="微软小娜全球资深产品总监Paul Bloom接受CSDN记者采访."
-            />
-    </LinearLayout>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="@dimen/value_10dp"
+                android:id="@+id/article_about_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="微软小娜全球资深产品总监Paul Bloom接受CSDN记者采访."
+                />
+         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

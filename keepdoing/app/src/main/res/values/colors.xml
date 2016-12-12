@@ -32,4 +32,6 @@
 
     <!--文本提示文字-->
     <color name="text_hint_division">#a3a3a3</color>
+    <!--分割线颜色-->
+    <color name="division_color">#e0e0e0</color>
 </resources>
