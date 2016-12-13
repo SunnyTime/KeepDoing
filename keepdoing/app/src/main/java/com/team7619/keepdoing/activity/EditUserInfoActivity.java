@@ -13,11 +13,16 @@ import com.team7619.keepdoing.Utils.FileUtil;
 import com.team7619.keepdoing.myviews.CircleImage.RoundImageView;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
+
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UploadFileListener;
 
 /**
  * Created by dushiguang on 16/12/12.
@@ -26,6 +31,8 @@ import java.io.File;
 public class EditUserInfoActivity extends BaseActivity {
     @ViewById(R.id.user_pic_roundiv)
     RoundImageView mUserPicRoundIv;
+
+    private String userPicUrlKey;
 
     private static final int ALBUM_REQEST_CODE = 1;
 
@@ -50,8 +57,26 @@ public class EditUserInfoActivity extends BaseActivity {
         if(null == path) {
             return null;
         } else {
+            uploadFile(path);
             return new File(path);
         }
+    }
+
+    @Background
+    public void uploadFile(String path) {
+        final BmobFile bmobFile = new BmobFile(new File(path));
+        showprogress();
+        bmobFile.uploadblock(new UploadFileListener() {
+            @Override
+            public void done(BmobException e) {
+                if(e == null) {
+                    userPicUrlKey = bmobFile.getFileUrl();
+                } else {
+                    showToast("上传失败" + e.getMessage());
+                }
+                closeProgress();
+            }
+        });
     }
 
     @Override

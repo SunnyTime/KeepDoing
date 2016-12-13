@@ -35,6 +35,9 @@ dependencies {
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.7.2'
+    compile 'com.squareup.okhttp:okhttp:2.7.2'
+
     //compile 'cn.bmob.android:bmob-sdk:3.5.1'
     compile files('libs/gson-2.6.2.jar')
 }
