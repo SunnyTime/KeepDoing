@@ -26,6 +26,13 @@ android {
     sourceSets {
         main.jniLibs.srcDirs = ['libs']
     }
+
+    //解决okio冲突问题
+    packagingOptions {
+        exclude'META-INF/maven/com.squareup.okio/okio/pom.xml'
+        exclude'META-INF/maven/com.squareup.okio/okio/pom.properties'
+
+    }
 }
 
 dependencies {
@@ -37,8 +44,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.7.2'
     compile 'com.squareup.okhttp:okhttp:2.7.2'
-
-    //compile 'cn.bmob.android:bmob-sdk:3.5.1'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.22'
     compile files('libs/gson-2.6.2.jar')
 }
 
