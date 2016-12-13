@@ -14,6 +14,7 @@
         layout="@layout/layout_title_normal" />
 
     <LinearLayout
+        android:layout_marginTop="@dimen/value_10dp"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:id="@+id/user_basic_info_lly"
