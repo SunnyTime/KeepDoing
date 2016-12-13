@@ -20,7 +20,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light" >
-        <activity android:name=".MainActivity_" >
+        <activity android:name=".MainActivity_" />
+
+        <activity android:name="com.team7619.keepdoing.activity.SpaceDetails_" />
+
+        <activity android:name="com.team7619.keepdoing.activity.WriteActivity_" />
+
+        <activity android:name="com.team7619.keepdoing.activity.EditUserInfoActivity_" />
+
+        <activity android:name="com.team7619.keepdoing.activity.KeepDoingRegistActivity_" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,11 +36,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.team7619.keepdoing.activity.SpaceDetails_" />
-
-        <activity android:name="com.team7619.keepdoing.activity.WriteActivity_" />
-
-        <activity android:name="com.team7619.keepdoing.activity.EditUserInfoActivity_" />
     </application>
 
 </manifest>

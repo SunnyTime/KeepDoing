@@ -2,6 +2,8 @@ package com.team7619.keepdoing;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,8 @@ import org.androidannotations.annotations.ViewById;
  */
 @EActivity
 public abstract class BaseActivity extends FragmentActivity {
+    @ViewById(R.id.title_normal)
+    public RelativeLayout mTitleNormal;
     @ViewById(R.id.title_back_tv)
     public TextView mTitleBack;
     @ViewById(R.id.title_pagelabel_tv)
@@ -41,6 +45,10 @@ public abstract class BaseActivity extends FragmentActivity {
         //getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         mBmobUtils = new BmobUtils();
         mBmobUtils.initBmob(this);
+    }
+
+    protected void setTitleNormalGone() {
+        mTitleNormal.setVisibility(View.GONE);
     }
 
     protected void setBackIcon(Icon icon) {

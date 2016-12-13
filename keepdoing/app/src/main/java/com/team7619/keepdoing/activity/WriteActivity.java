@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.team7619.keepdoing.BaseActivity;
 import com.team7619.keepdoing.Iconfont.IconFont;
-import com.team7619.keepdoing.Iconfont.IconFontUtil;
 import com.team7619.keepdoing.MainActivity;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.entity.Article_Context;
@@ -27,7 +25,7 @@ import cn.bmob.v3.listener.SaveListener;
 /**
  * Created by ex-dushiguang201 on 2016-06-12.
  */
-@EActivity(R.layout.fragment_write)
+@EActivity(R.layout.activity_write)
 public class WriteActivity extends BaseActivity{
     @ViewById(R.id.title_et)
     EditText mTitle;
