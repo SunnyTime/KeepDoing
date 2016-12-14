@@ -1,5 +1,6 @@
 package com.team7619.keepdoing;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -130,5 +131,10 @@ public class MainActivity extends BaseActivity {
             spaceFragment.getListData(0);
             bottomNavigationView.selectTab(0);
         }
+    }
+
+    public static void jumpToMainActivity(Context context) {
+        Intent intent = new Intent(context, MainActivity_.class);
+        context.startActivity(intent);
     }
 }

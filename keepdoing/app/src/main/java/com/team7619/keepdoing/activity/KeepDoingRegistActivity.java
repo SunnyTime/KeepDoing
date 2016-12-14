@@ -86,6 +86,8 @@ public class KeepDoingRegistActivity extends BaseActivity {
             public void done(Object o, BmobException e) {
                 if(e == null) {
                     showToast("注册成功");
+                    KeepDoingLoginActivity.jumpToKeepDoingLoginActivity(KeepDoingRegistActivity.this);
+                    finish();
                 } else {
                     showToast("注册失败");
                 }
@@ -101,6 +103,7 @@ public class KeepDoingRegistActivity extends BaseActivity {
     @Click(R.id.normal_login_btn)
     public void normalLoginClick() {
         KeepDoingLoginActivity.jumpToKeepDoingLoginActivity(this);
+        finish();
     }
 
     /**

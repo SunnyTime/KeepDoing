@@ -51,20 +51,20 @@
 
             <TextView
                 android:textSize="@dimen/value_18sp"
-                android:id="@+id/user_phone_icon"
+                android:id="@+id/user_name_icon"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/mainColor"
                 />
 
             <EditText
-                android:id="@+id/phone_et"
+                android:id="@+id/user_name_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/value_20dp"
                 android:background="@null"
                 android:textSize="@dimen/value_15sp"
-                android:hint="请输入手机号"
+                android:hint="请输入用户名"
                 android:textColorHint="@color/text_hint_division"/>
         </LinearLayout>
 
@@ -113,7 +113,7 @@
             android:background="@color/division_color"/>
 
         <TextView
-            android:id="@+id/regist_btn"
+            android:id="@+id/log_in_btn"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/value_18sp"
@@ -134,7 +134,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/normal_sign_up_btn"
+            android:id="@+id/sign_up_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/mainColor"
