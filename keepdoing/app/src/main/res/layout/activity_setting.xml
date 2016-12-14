@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.team7619.keepdoing.MainActivity">
+
+    <!-- title -->
+    <include
+        android:id="@+id/title_normal"
+        layout="@layout/layout_title_normal" />
+
+    <TextView
+        android:id="@+id/log_out_btn"
+        android:layout_marginBottom="@dimen/value_10dp"
+        android:padding="@dimen/value_10dp"
+        android:background="@drawable/shape_rounder_edge_green"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/value_50dp"
+        android:text="退出当前账号"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

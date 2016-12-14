@@ -38,4 +38,5 @@
     <dimen name="value_18sp">18sp</dimen>
     <!--大标题-->
     <dimen name="value_25sp">25sp</dimen>
+    <dimen name="value_30sp">30sp</dimen>
 </resources>

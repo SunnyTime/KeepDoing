@@ -88,7 +88,7 @@ public class SpaceFragment extends BaseFragment {
         //closeLoadingProgress();
         // 不用base中的
         //showLoadingDialog();
-        //HouseBaoBeiEntity entity = app.getHaofangtuoApi().getHaiWaiHouseBaoBei(activity.customerId, recordOffset, 10);
+        //HouseBaoBeiEntity entity = App.getHaofangtuoApi().getHaiWaiHouseBaoBei(activity.customerId, recordOffset, 10);
         //数据刷新要放在UI线程!
         showprogress();
         final ArrayList<Space_Info> items = new ArrayList<Space_Info>();

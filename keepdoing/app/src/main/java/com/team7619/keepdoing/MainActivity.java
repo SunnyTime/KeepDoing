@@ -74,6 +74,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        bottomNavigationView.selectTab(0);
         setTabSelection(0);
     }
 

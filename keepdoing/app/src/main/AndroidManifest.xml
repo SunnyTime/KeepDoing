@@ -15,6 +15,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
+        android:name=".App_"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -30,8 +31,7 @@
 
         <activity android:name="com.team7619.keepdoing.activity.KeepDoingLoginActivity_" />
 
-
-        <activity android:name="com.team7619.keepdoing.activity.KeepDoingRegistActivity_" >
+        <activity android:name=".activity.LogoActivity_">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,6 +39,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.team7619.keepdoing.activity.KeepDoingRegistActivity_" />
+
+        <activity android:name=".activity.KeepDoingSettingActivity_" />
     </application>
 
 </manifest>

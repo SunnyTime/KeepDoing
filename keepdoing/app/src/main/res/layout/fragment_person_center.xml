@@ -1,58 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="com.team7619.keepdoing.MainActivity">
 
-    <!-- title -->
-    <include
-        android:id="@+id/title_normal"
-        layout="@layout/layout_title_normal" />
-
     <LinearLayout
-        android:layout_marginTop="@dimen/value_10dp"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:id="@+id/user_basic_info_lly"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/value_50dp">
+        android:layout_height="wrap_content">
 
-        <com.team7619.keepdoing.myviews.CircleImage.RoundImageView
-            android:id="@+id/user_pic"
-            android:layout_width="@dimen/value_50dp"
-            android:layout_height="@dimen/value_50dp"
-            android:src="@mipmap/xing">
-        </com.team7619.keepdoing.myviews.CircleImage.RoundImageView>
+        <!-- title -->
+        <include
+            android:id="@+id/title_normal"
+            layout="@layout/layout_title_normal" />
 
-        <TextView
-            android:id="@+id/user_name_tv"
-            android:layout_marginLeft="@dimen/value_10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SunnyTime"/>
-
-        <TextView
+        <LinearLayout
+            android:layout_marginTop="@dimen/value_10dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:id="@+id/user_basic_info_lly"
             android:gravity="center_vertical"
-            android:id="@+id/edit_user_info_tv"
-            android:layout_width="30sp"
-            android:layout_height="30sp"
-            android:layout_marginLeft="@dimen/value_10dp"
-            android:textSize="@dimen/value_18sp"
-            />
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/value_50dp">
+
+            <com.team7619.keepdoing.myviews.CircleImage.RoundImageView
+                android:id="@+id/user_pic"
+                android:layout_width="@dimen/value_50dp"
+                android:layout_height="@dimen/value_50dp"
+                android:src="@mipmap/xing">
+            </com.team7619.keepdoing.myviews.CircleImage.RoundImageView>
+
+            <TextView
+                android:id="@+id/user_name_tv"
+                android:layout_marginLeft="@dimen/value_10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SunnyTime"/>
+
+            <TextView
+                android:gravity="center_vertical"
+                android:id="@+id/edit_user_info_tv"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_marginLeft="@dimen/value_10dp"
+                android:textSize="@dimen/value_18sp"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="@dimen/value_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/value_20dp"
+            android:background="@color/division_color" />
+
     </LinearLayout>
-
-    <View
-        android:layout_marginTop="@dimen/value_20dp"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/value_20dp"
-        android:background="@color/contentDividerLine"
-        />
-
-
-</LinearLayout>
+</RelativeLayout>

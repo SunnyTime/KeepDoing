@@ -9,16 +9,16 @@ import android.widget.Toast;
 
 import com.team7619.keepdoing.Bmob.BmobUtils;
 import com.team7619.keepdoing.Iconfont.Icon;
-import com.team7619.keepdoing.Iconfont.IconFont;
 import com.team7619.keepdoing.Iconfont.IconFontUtil;
-import com.team7619.keepdoing.widget.CircularProgress;
 import com.team7619.keepdoing.widget.CustomerProgressDialog;
 
-import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+
+import cn.bmob.v3.BmobUser;
 
 /**
  * Created by ex-dushiguang201 on 2016-06-08.
@@ -34,8 +34,13 @@ public abstract class BaseActivity extends FragmentActivity {
     @ViewById(R.id.right_tv)
     public TextView mRight;
 
+    @App
+    public com.team7619.keepdoing.App mApplication;
+
     private CustomerProgressDialog dialog;
+    private BaseActivity context;
     public BmobUtils mBmobUtils;
+    protected BmobUser user;
 
 
     @Override
@@ -45,6 +50,30 @@ public abstract class BaseActivity extends FragmentActivity {
         //getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         mBmobUtils = new BmobUtils();
         mBmobUtils.initBmob(this);
+        user = mApplication.getUseInfo();
+        context = this;
+        addActivity();
+    }
+
+    /**
+     * 添加Activity
+     */
+    private void addActivity() {
+        mApplication.addActivity(context);
+    }
+
+    /**
+     * 销毁指定的Activity
+     */
+    public void removeActivity() {
+        mApplication.removeActivity(context);
+    }
+
+    /**
+     * 销毁所有的Activity，一般在注销时使用
+     */
+    public void removeAllActivity() {
+        mApplication.removeAllActivity();
     }
 
     protected void setTitleNormalGone() {
