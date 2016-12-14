@@ -59,6 +59,7 @@ public class KeepDoingLoginActivity extends BaseActivity {
             public void done(BmobUser bmobUser, BmobException e) {
                 if(e == null) {
                     showToast("登录成功");
+                    mApplication.setUseInfo(BmobUser.getCurrentUser());
                     MainActivity.jumpToMainActivity(KeepDoingLoginActivity.this);
                     finish();
                 } else {
