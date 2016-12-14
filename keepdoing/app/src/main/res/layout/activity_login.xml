@@ -38,41 +38,6 @@
             android:layout_marginTop="@dimen/value_5dp"
             android:background="@color/division_color"/>
 
-        <LinearLayout
-            android:paddingRight="@dimen/value_20dp"
-            android:paddingLeft="@dimen/value_20dp"
-            android:gravity="center_vertical"
-            android:id="@+id/user_name_lly"
-            android:layout_below="@+id/view1"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/value_50dp"
-            android:orientation="horizontal">
-            <TextView
-                android:textSize="@dimen/value_18sp"
-                android:id="@+id/user_name_icon"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/mainColor"
-                android:text="name"/>
-
-            <EditText
-                android:id="@+id/user_name_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:textSize="@dimen/value_15sp"
-                android:hint="你的昵称"
-                android:textColorHint="@color/text_hint_division"
-                android:layout_marginLeft="@dimen/value_20dp"
-                />
-        </LinearLayout>
-
-        <View
-            android:id="@+id/view2"
-            android:layout_below="@+id/user_name_lly"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/division_color"/>
 
         <LinearLayout
             android:paddingRight="@dimen/value_20dp"
@@ -81,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/value_50dp"
             android:orientation="horizontal"
-            android:layout_below="@+id/view2"
+            android:layout_below="@+id/view1"
             android:gravity="center_vertical">
 
             <TextView
@@ -90,7 +55,7 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/mainColor"
-                android:text="phone"/>
+                />
 
             <EditText
                 android:id="@+id/phone_et"
@@ -126,8 +91,7 @@
                 android:id="@+id/password_icon"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/mainColor"
-                android:text="phone"/>
+                android:textColor="@color/mainColor" />
 
             <EditText
                 android:id="@+id/password_et"
@@ -153,7 +117,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/value_18sp"
-            android:text="注册"
+            android:text="登录"
             android:layout_marginTop="@dimen/value_10dp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/value_50dp"
@@ -170,11 +134,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/normal_login_btn"
+            android:id="@+id/normal_sign_up_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/mainColor"
-            android:text="已有账号登录"/>
+            android:text="新用户注册"/>
 
         <View
             android:layout_marginLeft="@dimen/value_10dp"

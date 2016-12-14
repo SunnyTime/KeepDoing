@@ -1,7 +1,6 @@
 package com.team7619.keepdoing.fragment;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 
 import com.team7619.keepdoing.BaseFragment;
 import com.team7619.keepdoing.R;
-import com.team7619.keepdoing.activity.SpaceDetails;
+import com.team7619.keepdoing.activity.SpaceDetailsActivity;
 import com.team7619.keepdoing.entity.Space_Info;
 import com.team7619.keepdoing.myviews.CircleImage.RoundImageView;
 import com.team7619.keepdoing.myviews.SwipeRefreshRecyclerView.ItemDivider;
@@ -187,7 +186,7 @@ public class SpaceFragment extends BaseFragment {
 
                     @Override
                     public void onClick(View v) {
-                        SpaceDetails.jumpToSpaceDetails(getContext(), item.getObjectId());
+                        SpaceDetailsActivity.jumpToSpaceDetails(getContext(), item.getObjectId());
                     }
                 });
             }

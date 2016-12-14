@@ -22,11 +22,14 @@
         android:theme="@style/Theme.AppCompat.Light" >
         <activity android:name=".MainActivity_" />
 
-        <activity android:name="com.team7619.keepdoing.activity.SpaceDetails_" />
+        <activity android:name="com.team7619.keepdoing.activity.SpaceDetailsActivity_" />
 
         <activity android:name="com.team7619.keepdoing.activity.WriteActivity_" />
 
         <activity android:name="com.team7619.keepdoing.activity.EditUserInfoActivity_" />
+
+        <activity android:name="com.team7619.keepdoing.activity.KeepDoingLoginActivity_" />
+
 
         <activity android:name="com.team7619.keepdoing.activity.KeepDoingRegistActivity_" >
             <intent-filter>

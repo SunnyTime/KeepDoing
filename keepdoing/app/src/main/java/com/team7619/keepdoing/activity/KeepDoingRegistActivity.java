@@ -1,5 +1,7 @@
 package com.team7619.keepdoing.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -91,5 +93,26 @@ public class KeepDoingRegistActivity extends BaseActivity {
                 closeProgress();
             }
         });
+    }
+
+    /**
+     * 已有账号登录
+     */
+    @Click(R.id.normal_login_btn)
+    public void normalLoginClick() {
+        KeepDoingLoginActivity.jumpToKeepDoingLoginActivity(this);
+    }
+
+    /**
+     * 其他社交账号登录
+     */
+    @Click(R.id.other_login_btn)
+    public void otherLoginClick() {
+
+    }
+
+    public static void jumpToKeepDoingRegistActivity(Context context) {
+        Intent intent = new Intent(context, KeepDoingRegistActivity_.class);
+        context.startActivity(intent);
     }
 }
