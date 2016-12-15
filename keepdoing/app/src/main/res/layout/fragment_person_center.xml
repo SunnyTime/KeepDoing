@@ -30,8 +30,7 @@
                 android:id="@+id/user_pic"
                 android:layout_width="@dimen/value_50dp"
                 android:layout_height="@dimen/value_50dp"
-                android:src="@mipmap/xing">
-            </com.team7619.keepdoing.myviews.CircleImage.RoundImageView>
+                />
 
             <TextView
                 android:id="@+id/user_name_tv"

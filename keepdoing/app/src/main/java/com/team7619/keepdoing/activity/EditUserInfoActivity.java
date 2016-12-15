@@ -2,26 +2,33 @@ package com.team7619.keepdoing.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Parcelable;
+import android.widget.TextView;
 
 import com.team7619.keepdoing.BaseActivity;
 import com.team7619.keepdoing.Iconfont.IconFont;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.Utils.FileUtil;
+import com.team7619.keepdoing.entity._User;
 import com.team7619.keepdoing.myviews.CircleImage.RoundImageView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
 
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
 /**
@@ -31,15 +38,34 @@ import cn.bmob.v3.listener.UploadFileListener;
 public class EditUserInfoActivity extends BaseActivity {
     @ViewById(R.id.user_pic_roundiv)
     RoundImageView mUserPicRoundIv;
+    @ViewById(R.id.user_name_tv)
+    TextView mUserName;
+
+    @Extra(userInfoKey)
+    _User mExUser;
+    @Extra(userPicPathKey)
+    String mUserPicPathStr;
 
     private String userPicUrlKey;
+    private _User user;
 
     private static final int ALBUM_REQEST_CODE = 1;
+    private static final String userInfoKey = "USERINFO";
+    private static final String userPicPathKey = "USERPICPATH";
 
     @AfterViews
     public void afterViews() {
         setPageLable(R.string.edit_user_info_pagelable);
         setBackIcon(IconFont.IC_BACK);
+        setViews();
+        user = new _User();
+    }
+
+    private void setViews() {
+        Bitmap bp = BitmapFactory.decodeFile(mUserPicPathStr);
+
+        mUserPicRoundIv.setImageBitmap(bp);
+        mUserName.setText(mExUser.getUsername());
     }
 
     private void takePhote() {
@@ -65,14 +91,30 @@ public class EditUserInfoActivity extends BaseActivity {
     @Background
     public void uploadFile(String path) {
         final BmobFile bmobFile = new BmobFile(new File(path));
+
         showprogress();
         bmobFile.uploadblock(new UploadFileListener() {
             @Override
             public void done(BmobException e) {
                 if(e == null) {
-                    userPicUrlKey = bmobFile.getFileUrl();
+                    user.setUserpic(bmobFile);
+                    updateUserPic();
                 } else {
-                    showToast("上传失败" + e.getMessage());
+                    showToast("图像上传失败" + e.getMessage());
+                }
+            }
+        });
+    }
+
+    @Background
+    public void updateUserPic() {
+        user.update(mApplication.getUseInfo().getObjectId(), new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if(e == null) {
+                    showToast("更新成功");
+                } else {
+                    showToast("更新失败" + e.getMessage());
                 }
                 closeProgress();
             }
@@ -106,8 +148,10 @@ public class EditUserInfoActivity extends BaseActivity {
         }
     }
 
-    public static void jumpToEditUserInfoActivity(Context context) {
+    public static void jumpToEditUserInfoActivity(Context context, _User user, String userPicPath ) {
         Intent intent = new Intent(context, EditUserInfoActivity_.class);
+        intent.putExtra(userInfoKey, user);
+        intent.putExtra(userPicPathKey, userPicPath);
         context.startActivity(intent);
     }
 

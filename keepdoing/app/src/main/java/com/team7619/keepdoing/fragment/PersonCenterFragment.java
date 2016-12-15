@@ -1,7 +1,12 @@
 package com.team7619.keepdoing.fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.FileObserver;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.team7619.keepdoing.BaseFragment;
@@ -9,6 +14,7 @@ import com.team7619.keepdoing.Iconfont.Icon;
 import com.team7619.keepdoing.Iconfont.IconFont;
 import com.team7619.keepdoing.Iconfont.IconFontUtil;
 import com.team7619.keepdoing.R;
+import com.team7619.keepdoing.Utils.FileUtil;
 import com.team7619.keepdoing.activity.EditUserInfoActivity;
 import com.team7619.keepdoing.activity.KeepDoingSettingActivity;
 import com.team7619.keepdoing.entity._User;
@@ -20,9 +26,13 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
+import java.io.File;
+
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.QueryListener;
 
 /**
@@ -41,6 +51,9 @@ public class PersonCenterFragment extends BaseFragment {
     @ViewById(R.id.edit_user_info_tv)
     TextView mEditUserInfoIcon;
 
+    private _User mUser;
+    private String mUserPicPath;
+
     @AfterViews
     public void afterViews() {
         IconFontUtil.setIcon(getContext(),mEditUserInfoIcon, IconFont.IC_EDITOR_USER_INFO);
@@ -58,7 +71,8 @@ public class PersonCenterFragment extends BaseFragment {
             @Override
             public void done(_User user, BmobException e) {
                 if(e == null) {
-                    initViews(user);
+                    mUser = user;
+                    getUserPic(user);
                 } else {
                     showToast("获取用户信息失败");
                 }
@@ -66,12 +80,35 @@ public class PersonCenterFragment extends BaseFragment {
         });
     }
 
-    private void initViews(_User user) {
+    @Background
+    public void getUserPic(final _User info) {
+        BmobFile file = info.getUserpic();
+        if(file != null) {
+            file.download(new DownloadFileListener() {
+                @Override
+                public void done(String s, BmobException e) {
+                    mUserPicPath = s;
+                    initViews(info, s);
+                }
+
+                @Override
+                public void onProgress(Integer integer, long l) {
+
+                }
+            });
+        }
+    }
+
+    private void initViews(_User user, String picPath) {
+        Bitmap bm = BitmapFactory.decodeFile(picPath);
+        Uri mUri = Uri.parse(picPath);
+        //mUserPic.setImageURI(mUri);
+        mUserPic.setImageBitmap(bm );
         mUserName.setText(user.getUsername());
     }
     @Click(R.id.edit_user_info_tv)
     public void editUserInfoClick() {
-        EditUserInfoActivity.jumpToEditUserInfoActivity(getContext());
+        EditUserInfoActivity.jumpToEditUserInfoActivity(getContext(), mUser, mUserPicPath);
     }
 
     @Click(R.id.right_tv)
