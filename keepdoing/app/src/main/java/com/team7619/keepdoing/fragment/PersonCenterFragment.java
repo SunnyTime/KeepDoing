@@ -2,19 +2,13 @@ package com.team7619.keepdoing.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.FileObserver;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.team7619.keepdoing.BaseFragment;
-import com.team7619.keepdoing.Iconfont.Icon;
 import com.team7619.keepdoing.Iconfont.IconFont;
 import com.team7619.keepdoing.Iconfont.IconFontUtil;
 import com.team7619.keepdoing.R;
-import com.team7619.keepdoing.Utils.FileUtil;
 import com.team7619.keepdoing.activity.EditUserInfoActivity;
 import com.team7619.keepdoing.activity.KeepDoingSettingActivity;
 import com.team7619.keepdoing.entity._User;
@@ -26,10 +20,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-import java.io.File;
-
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.DownloadFileListener;
@@ -50,6 +41,10 @@ public class PersonCenterFragment extends BaseFragment {
     TextView mUserName;
     @ViewById(R.id.edit_user_info_tv)
     TextView mEditUserInfoIcon;
+    @ViewById(R.id.public_article_icon)
+    TextView mPublicArticleIcon;
+    @ViewById(R.id.public_article_num)
+    TextView mPublicArticleNum;
 
     private _User mUser;
     private String mUserPicPath;
@@ -58,6 +53,7 @@ public class PersonCenterFragment extends BaseFragment {
     public void afterViews() {
         IconFontUtil.setIcon(getContext(),mEditUserInfoIcon, IconFont.IC_EDITOR_USER_INFO);
         IconFontUtil.setIcon(getContext(),mRightIcon, IconFont.IC_SETTING_ICON);
+        IconFontUtil.setIcon(getContext(),mPublicArticleIcon, IconFont.IC_PUBLIC_ARTICLE_ICON);
 
         mTitlePagelabel.setText("个人中心");
         getUserInfo();
@@ -105,6 +101,7 @@ public class PersonCenterFragment extends BaseFragment {
         //mUserPic.setImageURI(mUri);
         mUserPic.setImageBitmap(bm );
         mUserName.setText(user.getUsername());
+        mPublicArticleNum.setText(String.valueOf(user.getTotalarticle()));
     }
     @Click(R.id.edit_user_info_tv)
     public void editUserInfoClick() {

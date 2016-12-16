@@ -10,6 +10,7 @@ import cn.bmob.v3.datatype.BmobFile;
  */
 public class _User extends BmobUser {
     BmobFile userpic;
+    Integer totalarticle;
 
     public BmobFile getUserpic() {
         return userpic;
@@ -17,5 +18,13 @@ public class _User extends BmobUser {
 
     public void setUserpic(BmobFile userpic) {
         this.userpic = userpic;
+    }
+
+    public Integer getTotalarticle() {
+        return totalarticle;
+    }
+
+    public void setTotalarticle(Integer totalarticle) {
+        this.totalarticle = totalarticle;
     }
 }

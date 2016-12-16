@@ -55,5 +55,44 @@
             android:layout_height="@dimen/value_20dp"
             android:background="@color/division_color" />
 
+        <RelativeLayout
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/value_50dp">
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/mainColor"
+                android:layout_centerVertical="true"
+                android:id="@+id/public_article_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:textSize="@dimen/value_20sp"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/value_10dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/public_article_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公开文章"/>
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/public_article_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="10"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/value_1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/division_color"
+                />
+        </RelativeLayout>
+
     </LinearLayout>
 </RelativeLayout>

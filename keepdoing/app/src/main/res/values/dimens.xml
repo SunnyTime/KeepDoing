@@ -36,6 +36,7 @@
     <dimen name="value_12sp">12sp</dimen>
     <dimen name="value_15sp">15sp</dimen>
     <dimen name="value_18sp">18sp</dimen>
+    <dimen name="value_20sp">20sp</dimen>
     <!--大标题-->
     <dimen name="value_25sp">25sp</dimen>
     <dimen name="value_30sp">30sp</dimen>
