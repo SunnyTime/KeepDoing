@@ -8,15 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.team7619.keepdoing.BaseFragment;
+import com.team7619.keepdoing.MainActivity;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.activity.SpaceDetailsActivity;
+import com.team7619.keepdoing.adapter.LocalImgAdapter;
 import com.team7619.keepdoing.entity.Space_Info;
 import com.team7619.keepdoing.myviews.CircleImage.RoundImageView;
 import com.team7619.keepdoing.myviews.SwipeRefreshRecyclerView.ItemDivider;
 import com.team7619.keepdoing.myviews.SwipeRefreshRecyclerView.SwipeRefreshRecyclerView;
+import com.team7619.keepdoing.widget.banner.LMBanners;
+import com.team7619.keepdoing.widget.banner.ParallaxTransformer;
+import com.team7619.keepdoing.widget.banner.utils.ScreenUtils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -39,18 +45,66 @@ public class SpaceFragment extends BaseFragment {
     @ViewById(R.id.space_listview)
     SwipeRefreshRecyclerView theListView;
 
+    @ViewById(R.id.banner)
+    LMBanners mbanners;
+
     private int recordOffset = 0;   //数据偏移量
     private int mTotalNum;    //显示条目的总数量
-    private ArrayList<Space_Info> mSpaceBean = new ArrayList<Space_Info>();  //到店日期数据源
+    private ArrayList<Space_Info> mSpaceBean = new ArrayList<Space_Info>();
+    //本地图片
+    private ArrayList<Integer> localImages = new ArrayList<Integer>();
+    //网络图片
+    private List<String> networkImages = new ArrayList<>();
+
     private ListAdapater mAdapter;
     private RecyclerView mRecyclerView;
+
+    private int[] mImagesSrc = {
+            R.mipmap.img1,
+            R.mipmap.img2,
+            R.mipmap.img3,
+            R.mipmap.img4,
+            R.mipmap.img5
+    };
 
     @AfterViews
     void afterViews() {
         initRecyclerView();
+        initBanner();
         getListData(recordOffset);
         mRecyclerView = theListView.getRecyclerView();
         mRecyclerView.addItemDecoration(new ItemDivider(getContext(), LinearLayoutManager.HORIZONTAL, 1, getResources().getColor(R.color.mainbg)));
+    }
+
+    private void initBanner() {
+        addLocalImg();
+        mbanners.setLayoutParams(new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.dip2px(getContext(), 200)));
+        //本地用法
+        mbanners.setAdapter(new LocalImgAdapter(getContext()),localImages);
+        //网络图片
+//        mLBanners.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
+        //参数设置
+        mbanners.setAutoPlay(true);//自动播放
+        mbanners.setVertical(false);//是否可以垂直
+        mbanners.setScrollDurtion(222);//两页切换时间
+        mbanners.setCanLoop(true);//循环播放
+        mbanners.setSelectIndicatorRes(R.drawable.page_indicator_select);//选中的原点
+        mbanners.setUnSelectUnIndicatorRes(R.drawable.page_indicator_unselect);//未选中的原点
+        mbanners.setIndicatorWidth(5);//默认为5dp
+//        mLBanners.setHoriZontalTransitionEffect(TransitionEffect.Default);//选中喜欢的样式
+        mbanners.setHoriZontalCustomTransformer(new ParallaxTransformer(R.id.id_image));//自定义样式
+        mbanners.setDurtion(2000);//切换时间
+        mbanners.hideIndicatorLayout();//隐藏原点
+        mbanners.showIndicatorLayout();//显示原点
+        mbanners.setIndicatorPosition(LMBanners.IndicaTorPosition.BOTTOM_MID);//设置原点显示位置
+    }
+
+    private void addLocalImg() {
+        localImages.add(R.mipmap.img1);
+        localImages.add(R.mipmap.img2);
+        localImages.add(R.mipmap.img3);
+        localImages.add(R.mipmap.img4);
+        localImages.add(R.mipmap.img5);
     }
 
     public void initRecyclerView() {
@@ -158,6 +212,24 @@ public class SpaceFragment extends BaseFragment {
             theListView.setIsLoadMore(true);
         }
         theListView.onCompleted();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mbanners.stopImageTimerTask();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mbanners.startImageTimerTask();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mbanners.clearImageTimerTask();
     }
 
     public class ListAdapater extends RecyclerView.Adapter<ListItemViewHolder> {
