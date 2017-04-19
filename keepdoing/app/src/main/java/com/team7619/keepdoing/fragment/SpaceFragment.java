@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.team7619.keepdoing.BaseFragment;
-import com.team7619.keepdoing.MainActivity;
 import com.team7619.keepdoing.R;
 import com.team7619.keepdoing.activity.SpaceDetailsActivity;
 import com.team7619.keepdoing.adapter.LocalImgAdapter;
@@ -22,6 +21,7 @@ import com.team7619.keepdoing.myviews.SwipeRefreshRecyclerView.ItemDivider;
 import com.team7619.keepdoing.myviews.SwipeRefreshRecyclerView.SwipeRefreshRecyclerView;
 import com.team7619.keepdoing.widget.banner.LMBanners;
 import com.team7619.keepdoing.widget.banner.ParallaxTransformer;
+import com.team7619.keepdoing.widget.banner.transformer.TransitionEffect;
 import com.team7619.keepdoing.widget.banner.utils.ScreenUtils;
 
 import org.androidannotations.annotations.AfterViews;
@@ -82,21 +82,22 @@ public class SpaceFragment extends BaseFragment {
         //本地用法
         mbanners.setAdapter(new LocalImgAdapter(getContext()),localImages);
         //网络图片
-//        mLBanners.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
+        //mLBanners.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
         //参数设置
         mbanners.setAutoPlay(true);//自动播放
         mbanners.setVertical(false);//是否可以垂直
-        mbanners.setScrollDurtion(222);//两页切换时间
+        mbanners.setScrollDurtion(500);//两页切换时间
         mbanners.setCanLoop(true);//循环播放
         mbanners.setSelectIndicatorRes(R.drawable.page_indicator_select);//选中的原点
         mbanners.setUnSelectUnIndicatorRes(R.drawable.page_indicator_unselect);//未选中的原点
         mbanners.setIndicatorWidth(5);//默认为5dp
-//        mLBanners.setHoriZontalTransitionEffect(TransitionEffect.Default);//选中喜欢的样式
         mbanners.setHoriZontalCustomTransformer(new ParallaxTransformer(R.id.id_image));//自定义样式
         mbanners.setDurtion(2000);//切换时间
         mbanners.hideIndicatorLayout();//隐藏原点
         mbanners.showIndicatorLayout();//显示原点
         mbanners.setIndicatorPosition(LMBanners.IndicaTorPosition.BOTTOM_MID);//设置原点显示位置
+        mbanners.setHoriZontalTransitionEffect(TransitionEffect.Accordion.ZoomFade);//设置图片切换时的方式
+
     }
 
     private void addLocalImg() {
